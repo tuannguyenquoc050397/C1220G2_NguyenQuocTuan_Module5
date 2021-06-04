@@ -1,0 +1,23 @@
+
+
+<div class="row">
+  <div class="col-4">
+  </div>
+
+  <div class="col-4">
+    <h1 style="text-align: center">Calculator vip pro</h1>
+    <p>number1</p>
+    <input type="number" class="form-control" [(ngModel)]="num1">
+    <p>number2</p>
+    <input type="number" class="form-control" [(ngModel)]="num2">
+    <br>
+    <br>
+    <button type="submit" class="btn btn-primary" (click)="calculator('add')">+</button>
+    <button type="submit" class="btn btn-success" (click)="calculator('sub')">-</button>
+    <button type="submit" class="btn btn-secondary" (click)="calculator('mul')">x</button>
+    <button type="submit" class="btn btn-info " (click)="calculator('div')">/</button>
+    <h3 style="color: red" >{{result}}</h3>
+  </div>
+</div>
+
+
