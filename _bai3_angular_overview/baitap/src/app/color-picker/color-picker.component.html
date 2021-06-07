@@ -3,14 +3,14 @@
   </div>
   <div class="col-4">
     <p>Red</p>
-    <input type="range" min="0" max="255" value="18" class="form-control" [(ngModel)] = "red"> {{red}}
+    <input type="range" min="0" max="255" value="18" class="form-control" (change)=setRed($event)> {{red}}
     <p>Green</p>
-    <input type="range" min="0" max="255" value="18" class="form-control" [(ngModel)] = "green"> {{green}}
+    <input type="range" min="0" max="255" value="18" class="form-control" (change)=setGreen($event)> {{green}}
     <p>Blu</p>
-    <input type="range" min="0" max="255" value="18" class="form-control" [(ngModel)] = "blu" > {{blu}}
+    <input type="range" min="0" max="255" value="18" class="form-control" (change)=setBlu($event)> {{blu}}
     <br>
-    <button type="submit" class="btn btn-primary"  (click)="change()">Change - Color</button>
+    <button type="submit" class="btn btn-primary" (click)="change()">Change - Color</button>
 
-    <p style="width: 100%; height: 300px" [style.background-color]="color" >{{color}}</p>
+    <p style="width: 100%; height: 300px" [style.background-color]="color">{{color}}</p>
   </div>
 </div>

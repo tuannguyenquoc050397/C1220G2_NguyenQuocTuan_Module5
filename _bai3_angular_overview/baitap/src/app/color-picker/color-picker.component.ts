@@ -17,18 +17,30 @@ export class ColorPickerComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  setRed($event: any): void {
+    this.red = Number($event.target.value);
+  }
+
+  setBlu($event: any): void {
+    this.blu = Number($event.target.value);
+  }
+
+  setGreen($event: any): void {
+    this.green = Number($event.target.value);
+  }
+
   change(): void {
     let redStr = this.red.toString(16);
     let bluStr = this.blu.toString(16);
     let greenStr = this.green.toString(16);
 
-    if (redStr.length === 1){
+    if (redStr.length === 1) {
       redStr = '0' + redStr;
     }
-    if (bluStr.length === 1){
+    if (bluStr.length === 1) {
       bluStr = '0' + bluStr;
     }
-    if (greenStr.length === 1){
+    if (greenStr.length === 1) {
       greenStr = '0' + greenStr;
     }
     this.color = '#' + redStr + greenStr + bluStr;

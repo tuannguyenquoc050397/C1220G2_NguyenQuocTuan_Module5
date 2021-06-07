@@ -16,6 +16,12 @@ export class CalculatorComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  setNum1($event: any): void {
+    this.num1 = Number($event.target.value);
+  }
+  setNum2($event: any): void {
+    this.num2 = Number($event.target.value);
+  }
   calculator(action: string): void {
     switch (action) {
       case 'add':
@@ -30,7 +36,7 @@ export class CalculatorComponent implements OnInit {
       case 'div':
         if (this.num2 === 0) {
           this.result = 'this.num2 can not is 0';
-        }else {
+        } else {
           this.result = this.num1 / this.num2;
         }
         break;

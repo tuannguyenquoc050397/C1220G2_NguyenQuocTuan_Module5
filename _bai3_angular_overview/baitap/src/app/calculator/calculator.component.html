@@ -7,9 +7,9 @@
   <div class="col-4">
     <h1 style="text-align: center">Calculator vip pro</h1>
     <p>number1</p>
-    <input type="number" class="form-control" [(ngModel)]="num1">
+    <input type="number" class="form-control" (change)=setNum1($event)>
     <p>number2</p>
-    <input type="number" class="form-control" [(ngModel)]="num2">
+    <input type="number" class="form-control" (change)=setNum2($event)>
     <br>
     <br>
     <button type="submit" class="btn btn-primary" (click)="calculator('add')">+</button>
