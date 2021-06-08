@@ -1,0 +1,7 @@
+<p>rating-bar works!</p>
+
+<p>{{ratingValue}}</p>
+<ng-container *ngFor="let idx of arrayValue">
+  <button (click)="setValueRatingAndColor(idx+1)" [ngStyle]="{'background' : backgroundString[idx]}" >{{idx+1}}</button>
+</ng-container>
+

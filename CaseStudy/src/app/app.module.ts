@@ -10,6 +10,8 @@ import { ListCustomerComponent } from './list-customer/list-customer.component';
 import { ListEmployeeComponent } from './list-employee/list-employee.component';
 import { ListContractComponent } from './list-contract/list-contract.component';
 import { ListServiceComponent } from './list-service/list-service.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { ListServiceComponent } from './list-service/list-service.component';
     ListCustomerComponent,
     ListEmployeeComponent,
     ListContractComponent,
-    ListServiceComponent
+    ListServiceComponent,
+    NavbarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule
