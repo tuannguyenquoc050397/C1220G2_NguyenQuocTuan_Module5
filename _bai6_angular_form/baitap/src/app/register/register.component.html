@@ -1,0 +1,124 @@
+<p>register works!</p>
+
+<div class="container">
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-9">
+      <form [formGroup]="registerForm" (ngSubmit)="submitForm()">
+        <table>
+          <tr>
+            <td>
+              email:
+            </td>
+            <td>
+              <input type="text" formControlName="email" class="form-group">
+
+            </td>
+            <td>
+              <span style="color: red"
+                    *ngIf="registerForm.controls.email.hasError('required')
+         && registerForm.controls.email.dirty">
+                Email is empty</span>
+              <span style="color: red"
+                    *ngIf="registerForm.controls.email.hasError('email')
+         && registerForm.controls.email.dirty">
+                Invalid format email</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>password:</p>
+              <p>confirm password:</p>
+            </td>
+            <td>
+              <fieldset formGroupName="passwordGroup">
+                <input type="text" formControlName="password" class="form-group">
+                <span style="color: red"
+                      *ngIf="registerForm.controls.passwordGroup.get('password').hasError('minlength')
+                       && registerForm.get('passwordGroup').dirty">password length <= 6</span>
+                <br>
+                <input type="text" formControlName="confirmPassword" class="form-group">
+                <span style="color: red"
+                      *ngIf="registerForm.hasError('passwordnotmacth',['passwordGroup'])
+      && registerForm.get('passwordGroup').dirty">password not matching</span>
+              </fieldset>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Country:
+            </td>
+            <td>
+              <div class="form-group">
+                <select formControlName="country" class="form-control">
+                  <option value="VietNam">Viet Nam</option>
+                  <option value="UAE">UAE</option>
+                  <option value="ThaiLan">Thai Lan</option>
+                </select>
+              </div>
+              <span style="color: red"
+                    *ngIf="registerForm.controls.country.hasError('required')
+         && registerForm.controls.country.pristine">
+                country is empty</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Age:
+            </td>
+            <td>
+              <input type="number" formControlName="age" class="form-group">
+              <span style="color: red"
+                    *ngIf="registerForm.controls.age.hasError('required')
+         && registerForm.controls.age.dirty">
+                age is empty</span>
+              <span style="color: red"
+                    *ngIf="registerForm.controls.age.hasError('min')
+         && registerForm.controls.age.dirty">
+                age <= 18 </span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Gender:
+            </td>
+            <td>
+              <div class="form-check-inline">
+                <label class="form-check-label">
+                  <input type="radio" class="form-check-input" formControlName="gender" name="gender" value="Nam">Nam
+                </label>
+              </div>
+              <div class="form-check-inline">
+                <label class="form-check-label">
+                  <input type="radio" class="form-check-input" formControlName="gender" name="gender" value="Nu">Nu
+                </label>
+              </div>
+              <span style="color: red"
+                    *ngIf="registerForm.controls.gender.hasError('required')
+         && registerForm.controls.gender.pristine">
+                gender is empty</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Phone:
+            </td>
+            <td>
+              <input type="text" formControlName="phone" class="form-group">
+              <span style="color: red"
+                    *ngIf="registerForm.controls.phone.hasError('pattern')
+         && registerForm.controls.phone.dirty">
+                phone is not valid</span>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <button type="submit" [disabled]="!registerForm.valid">Submit</button>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+  </div>
+</div>
