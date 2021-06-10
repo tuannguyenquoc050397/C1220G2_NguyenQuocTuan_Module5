@@ -1,0 +1,14 @@
+<h1>Dictionary Vip</h1>
+<table border="1px">
+  <tr>
+    <th>STT</th>
+    <th>word</th>
+    <th>action</th>
+  </tr>
+  <tr *ngFor="let wordElement of wordList; index as i">
+    <td>{{i + 1}}</td>
+    <td>{{wordElement.word}}</td>
+    <td><a [routerLink]="['/detail-word', wordElement.word ]">detail</a></td>
+
+  </tr>
+</table>
