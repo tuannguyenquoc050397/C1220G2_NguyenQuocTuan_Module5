@@ -1,0 +1,88 @@
+<body>
+<h5 style="text-align: center">ADD NEW EMPLOYEE</h5>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+    </div>
+    <div class="col-7" style="font-size: 14px">
+      <form [formGroup]="employeeFormGroup" (ngSubmit)="submit()">
+        <div class="form-group">
+          Id:
+          <input type="text" class="form-control input-sm" formControlName="id">
+          <span style="color: red"
+                *ngIf="employeeFormGroup.controls.id.hasError('pattern')
+         && employeeFormGroup.controls.id.dirty">
+                id not matching</span>
+        </div>
+        <div class="form-group">
+          Name:
+          <input type="text" class="form-control input-sm" formControlName="name">
+        </div>
+        <div class="form-group">
+          Date of birth:
+          <input type="date" class="form-control input-sm" formControlName="dateOfBirth">
+        </div>
+        <div class="form-group">
+          Id card:
+          <input type="text" class="form-control input-sm" formControlName="idCard">
+          <span style="color: red"
+                *ngIf="employeeFormGroup.controls.idCard.hasError('pattern')
+         && employeeFormGroup.controls.idCard.dirty">
+                idCard not matching</span>
+        </div>
+        <div class="form-group">
+          Number phone:
+          <input type="text" class="form-control input-sm" formControlName="phone">
+          <span style="color: red"
+                *ngIf="employeeFormGroup.controls.phone.hasError('pattern')
+         && employeeFormGroup.controls.phone.dirty">
+                phone not matching</span>
+        </div>
+        <div class="form-group">
+          Email:
+          <input type="text" class="form-control input-sm" formControlName="email">
+          <span style="color: red"
+                *ngIf="employeeFormGroup.controls.email.hasError('email')
+         && employeeFormGroup.controls.email.dirty">
+                email not matching</span>
+        </div>
+        <div class="form-group">
+          Address:
+          <input type="text" class="form-control input-sm" formControlName="address">
+        </div>
+        <div class="form-group">
+          Salary:
+          <input type="number" class="form-control input-sm" formControlName="salary">
+        </div>
+        <div class="form-group">
+          Division:
+          <select class="form-control" formControlName="division">
+            <option value="division1">division1</option>
+            <option value="division2">division2</option>
+            <option value="division3">division3</option>
+          </select>
+        </div>
+        <div class="form-group">
+          Position:
+          <select class="form-control" formControlName="position">
+            <option value="position1">position1</option>
+            <option value="position2">position2</option>
+            <option value="position3">position3</option>
+          </select>
+        </div>
+        <div class="form-group">
+          EducationDegree:
+          <select class="form-control" formControlName="educationDegree">
+            <option value="edu1">educationDegree1</option>
+            <option value="edu2">educationDegree2</option>
+            <option value="edu3">educationDegree3</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!employeeFormGroup.valid">Add</button>
+        <a type="button" class="btn btn-success" routerLink="/employee/list">Close</a>
+      </form>
+    </div>
+  </div>
+</div>
+</body>
+

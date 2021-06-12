@@ -5,7 +5,7 @@
       <td>Mã sản phẩm:</td>
       <td><input type="number" formControlName="id"></td>
       <span style="color: red"
-            *ngIf="productForm.controls.id.hasError('required')
+                                        *ngIf="productForm.controls.id.hasError('required')
          && productForm.controls.id.touched">
                 id is empty</span>
     </tr>

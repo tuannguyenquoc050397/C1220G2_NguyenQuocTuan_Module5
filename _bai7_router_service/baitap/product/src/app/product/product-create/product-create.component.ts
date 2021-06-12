@@ -11,7 +11,7 @@ import {Product} from '../../model/product';
 })
 export class ProductCreateComponent implements OnInit {
   productForm: FormGroup = new FormGroup({
-    id: new FormControl('', [ Validators.required, this.checkId]),
+    id: new FormControl('', [ Validators.required]),
     name: new FormControl(),
     price: new FormControl(),
     description: new FormControl()
@@ -20,10 +20,9 @@ export class ProductCreateComponent implements OnInit {
 
   constructor(private productService: ProductService,
               private router: Router) {
-    // chua fix
-    // this.products = this.productService.getAll();
-    // console.log(this.products);
+
   }
+
 
   ngOnInit(): void {
   }
@@ -35,12 +34,4 @@ export class ProductCreateComponent implements OnInit {
     this.router.navigateByUrl('');
   }
 
-  // chua fix
-  checkId(c: AbstractControl) {
-    let idCreate = Number(c.value);
-    return true ?
-      null : {
-        checkidcreate: true
-      };
-  }
 }

@@ -8,10 +8,6 @@
             *ngIf="productForm.controls.id.hasError('required')
          && productForm.controls.id.touched">
                 id is empty</span>
-      <span style="color: red"
-            *ngIf="productForm.controls.id.hasError('checkidcreate')
-         && productForm.controls.id.touched">
-                duplicate id</span>
     </tr>
     <tr>
       <td>Tên sản phẩm:</td>

@@ -32,16 +32,16 @@
             </td>
             <td>
               <fieldset formGroupName="passwordGroup">
-                <input type="text" formControlName="password" class="form-group">
-                <span style="color: red"
-                      *ngIf="registerForm.controls.passwordGroup.get('password').hasError('minlength')
+              <input type="text" formControlName="password" class="form-group">
+              <span style="color: red"
+                    *ngIf="registerForm.controls.passwordGroup.get('password').hasError('minlength')
                        && registerForm.get('passwordGroup').dirty">password length <= 6</span>
-                <br>
-                <input type="text" formControlName="confirmPassword" class="form-group">
-                <span style="color: red"
-                      *ngIf="registerForm.hasError('passwordnotmacth',['passwordGroup'])
+              <br>
+              <input type="text" formControlName="confirmPassword" class="form-group">
+              <span style="color: red"
+                    *ngIf="registerForm.hasError('passwordnotmacth',['passwordGroup'])
       && registerForm.get('passwordGroup').dirty">password not matching</span>
-              </fieldset>
+            </fieldset>
             </td>
           </tr>
           <tr>

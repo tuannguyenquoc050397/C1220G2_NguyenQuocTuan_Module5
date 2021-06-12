@@ -1,0 +1,81 @@
+<body>
+<h5 style="text-align: center">ADD NEW SERVICE</h5>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+    </div>
+    <div class="col-7" style="font-size: 14px">
+      <form [formGroup]="serviceFormGroup" (ngSubmit)="submit()">
+        <div class="form-group">
+          Id:
+          <input type="text" class="form-control input-sm" formControlName="id">
+          <span style="color: red"
+                *ngIf="serviceFormGroup.controls.id.hasError('pattern')
+         && serviceFormGroup.controls.id.dirty">
+                id not matching</span>
+        </div>
+        <div class="form-group">
+          Name:
+          <input type="text" class="form-control input-sm" formControlName="name">
+        </div>
+        <div class="form-group">
+          Floor:
+          <input type="number" class="form-control input-sm" formControlName="floor">
+          <span style="color: red"
+                *ngIf="serviceFormGroup.controls.floor.hasError('min')
+         && serviceFormGroup.controls.floor.dirty">
+                >1 </span>
+        </div>
+        <div class="form-group">
+          Area:
+          <input type="number" class="form-control input-sm" formControlName="area">
+          <span style="color: red"
+                *ngIf="serviceFormGroup.controls.area.hasError('min')
+         && serviceFormGroup.controls.area.dirty">
+                >1 </span>
+        </div>
+        <div class="form-group">
+          Max people:
+          <input type="number" class="form-control input-sm" formControlName="maxPeople">
+          <span style="color: red"
+                *ngIf="serviceFormGroup.controls.maxPeople.hasError('min')
+         && serviceFormGroup.controls.maxPeople.dirty">
+                >1 </span>
+        </div>
+        <div class="form-group">
+          Cost:
+          <input type="number" class="form-control input-sm" formControlName="rent">
+          <span style="color: red"
+                *ngIf="serviceFormGroup.controls.rent.hasError('min')
+         && serviceFormGroup.controls.rent.dirty">
+                >1 </span>
+        </div>
+        <div class="form-group">
+          Type Rent:
+          <select class="form-control" formControlName="typeRent">
+            <option value="day">day</option>
+            <option value="month">month</option>
+            <option value="week">week</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          Status:
+          <select class="form-control" formControlName="status">
+            <option value="on">on</option>
+            <option value="off">off</option>
+          </select>
+        </div>
+
+
+
+
+
+        <button type="submit" class="btn btn-primary" [disabled]="!serviceFormGroup.valid">Add</button>
+        <a type="button" class="btn btn-success" routerLink="/employee/list">Close</a>
+      </form>
+    </div>
+  </div>
+</div>
+</body>
+
