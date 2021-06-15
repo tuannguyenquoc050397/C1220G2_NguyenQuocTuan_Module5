@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
 import {CustomerService} from '../customer.service';
 import {Router} from '@angular/router';
-import {TypeCustomer} from '../../model/type-customer';
 
 @Component({
   selector: 'app-customer-create',
@@ -12,7 +11,8 @@ import {TypeCustomer} from '../../model/type-customer';
 export class CustomerCreateComponent implements OnInit {
 
   customerFormGroup: FormGroup = new FormGroup({
-    id: new FormControl('', [Validators.pattern('^KH-[\\d]{4}$'), Validators.required]),
+    id: new FormControl('', Validators.required),
+    idCustomer: new FormControl('', [Validators.pattern('^KH-[\\d]{4}$'), Validators.required]),
     name: new FormControl(),
     idCard: new FormControl('', [Validators.pattern('^[0-9]{9}$'), Validators.required]),
     dateOfBirth: new FormControl(),
@@ -36,9 +36,14 @@ export class CustomerCreateComponent implements OnInit {
 
   submit() {
     const customer = this.customerFormGroup.value;
-    this.customerService.save(customer);
-    this.router.navigateByUrl('/customer/list');
+    this.customerService.save(customer).subscribe(() => {
+    }, e => {
+
+    }, () =>{
+      this.router.navigateByUrl('/list');
+    });
   }
+
 
   isEmpty(c: AbstractControl) {
     const v = c.value;

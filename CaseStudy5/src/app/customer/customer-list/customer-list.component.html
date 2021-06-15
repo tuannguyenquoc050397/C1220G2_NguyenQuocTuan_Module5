@@ -4,7 +4,7 @@
 <h1>List Customer</h1>
 <!--<div class="container-fluid">-->
 <!--  <div class="row">-->
-<!--    <form class="form-inline">-->
+  <!--    <form class="form-inline">-->
 <!--      <input type="text" class="form-control" placeholder="name" name="name"> &ensp;-->
 <!--      <input type="date" class="form-control" placeholder="date of birth" name="date of birth" > &ensp;-->
 <!--      <input type="text" class="form-control" placeholder="email" name="email" > &ensp;-->
@@ -12,8 +12,8 @@
 <!--    </form>-->
 <!--  </div>-->
 <!--</div>-->
-
-<div class="container-fluid" >
+<button type="button" (click)="customersUsingService()">click</button>
+<div class="container-fluid">
   <div class="row">
     <table class="table table-striped">
       <thead>
@@ -27,15 +27,20 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let customer of customers; index as i">
-        <td>{{i + 1}}</td>
+      <tr *ngFor="let customer of customers | slice: (page-1) * pageSize : page * pageSize">
+        <td>{{customer.idCustomer}}</td>
         <td>{{customer.name}}</td>
         <td>{{customer.dateOfBirth}}</td>
         <td>{{customer.email}}</td>
         <td>{{customer.typeCustomer.name}}</td>
-        <td><button [routerLink]="['/customer/update',customer.id]">Update</button></td>
-        <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal"
-            (click)="passData(customer.id, customer.name)">Delete</button></td>
+        <td>
+          <button [routerLink]="['/customer/update',customer.id]">Update</button>
+        </td>
+        <td>
+          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal"
+                  (click)="passData(customer.id, customer.name)">Delete
+          </button>
+        </td>
       </tr>
       </tbody>
     </table>
@@ -43,7 +48,8 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -57,9 +63,14 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="deleteById(idDelete)">Delete</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="deleteById(idDelete)">Delete
+        </button>
       </div>
     </div>
   </div>
 </div>
+<ngb-pagination
+  [(page)]="page"
+  [pageSize]="pageSize"
+  [collectionSize]="customers.length"></ngb-pagination>
 </body>

@@ -33,8 +33,8 @@
         <td>{{i + 1}}</td>
         <td>{{contract.id}}</td>
         <td>{{contract.customer.name}}</td>
-        <td>{{contract.startDate}}</td>
-        <td>{{contract.endDate}}</td>
+        <td>{{contract.startDate | date}} </td>
+        <td>{{contract.endDate | date}}</td>
         <td>{{contract.service.name}}</td>
         <td>{{contract.deposit}}</td>
         <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal"

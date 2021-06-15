@@ -28,9 +28,13 @@ export class ServiceCreateComponent implements OnInit {
   }
 
   submit() {
-    const employee = this.serviceFormGroup.value;
-    this.serviceService.save(employee);
-    this.router.navigateByUrl('/service/list');
+    const service = this.serviceFormGroup.value;
+    this.serviceService.save(service).subscribe(() => {
+    }, e => {
+
+    }, () =>{
+      this.router.navigateByUrl('/list');
+    });
   }
 
 }

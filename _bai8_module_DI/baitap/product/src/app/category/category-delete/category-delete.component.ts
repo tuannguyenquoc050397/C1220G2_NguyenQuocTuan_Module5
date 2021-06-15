@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {CategoryService} from '../category.service';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
@@ -18,11 +18,7 @@ export class CategoryDeleteComponent implements OnInit {
               private activatedRoute: ActivatedRoute) {
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       this.id = +paramMap.get('id');
-      const category = this.getCategory(this.id);
-      this.categoryForm = new FormGroup({
-        id: new FormControl(category.id),
-        name: new FormControl(category.name),
-      });
+      this.getCategory(this.id);
     });
   }
 
@@ -30,12 +26,19 @@ export class CategoryDeleteComponent implements OnInit {
   }
 
   getCategory(id: number) {
-    return this.categoryService.findById(id);
+    return this.categoryService.findById(id).subscribe(category => {
+      this.categoryForm = new FormGroup({
+        name: new FormControl(category.name),
+      });
+    });
   }
 
   deleteCategory(id: number) {
-    this.categoryService.deleteCategory(id);
-    this.router.navigate(['/category/list']);
+    this.categoryService.deleteCategory(id).subscribe(() => {
+      this.router.navigate(['/category/list']);
+    }, e => {
+      console.log(e);
+    });
   }
 
 }

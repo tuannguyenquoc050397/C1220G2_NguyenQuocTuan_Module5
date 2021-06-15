@@ -1,7 +1,8 @@
 import {TypeCustomer} from './type-customer';
 
 export interface Customer {
-  id: string;
+  id: number;
+  idCustomer?: string;
   name: string;
   dateOfBirth: string;
   idCard: string;

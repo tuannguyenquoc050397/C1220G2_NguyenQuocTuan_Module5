@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Employee} from '../../model/employee';
 import {EmployeeService} from '../employee.service';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Employee} from '../../model/employee';
 
 @Component({
   selector: 'app-employee-list',
@@ -11,21 +10,27 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 export class EmployeeListComponent implements OnInit {
 
   employees: Employee[];
-  idDelete: string;
+  idDelete: number;
   nameDelete: string;
 
   constructor(private employeeService: EmployeeService) {
-    this.employees=this.employeeService.findAll();
   }
 
   ngOnInit(): void {
+    this.loadList();
   }
 
-  passData(id: string, name: string) {
+  passData(id: number, name: string) {
     this.idDelete =id;
     this.nameDelete = name;
   }
-  deleteById(id: string){
-    this.employeeService.deleteById(id);
+  deleteById(id: number){
+    this.employeeService.deleteById(Number(id)).subscribe();
+    this.loadList();  }
+
+  loadList() {
+    this.employeeService.findAll().subscribe((data) => {
+      this.employees = data;
+    });
   }
 }

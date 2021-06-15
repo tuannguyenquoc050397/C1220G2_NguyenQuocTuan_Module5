@@ -1,6 +1,6 @@
 import {Customer} from './customer';
-import {Employee} from './employee';
 import {Service} from './service';
+import {Employee} from './employee';
 
 export interface Contract {
   id: string;

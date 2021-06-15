@@ -12,10 +12,11 @@ export class ContractListComponent implements OnInit {
   contracts: Contract[];
   idDelete: string;
   constructor(private contractService: ContractService) {
-    this.contracts = this.contractService.findAll();
+
   }
 
   ngOnInit(): void {
+    this.contracts = this.contractService.findAll();
   }
   deleteById(id: string) {
     this.contractService.deleteById(id);

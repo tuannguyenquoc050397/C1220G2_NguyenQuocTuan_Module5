@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {EmployeeService} from '../employee.service';
-import {Employee} from '../../model/employee';
 import {Router} from '@angular/router';
 
 @Component({
@@ -11,7 +10,8 @@ import {Router} from '@angular/router';
 })
 export class EmployeeCreateComponent implements OnInit {
   employeeFormGroup: FormGroup = new FormGroup({
-    id: new FormControl('', [Validators.pattern('^NV-[\\d]{4}$'), Validators.required]),
+    id: new FormControl(),
+    idEmployee: new FormControl('', [Validators.pattern('^NV-[\\d]{4}$'), Validators.required]),
     name: new FormControl(),
     idCard: new FormControl('', [Validators.pattern('^[0-9]{9}$'), Validators.required]),
     dateOfBirth: new FormControl(),
@@ -34,7 +34,11 @@ export class EmployeeCreateComponent implements OnInit {
 
   submit() {
     const employee = this.employeeFormGroup.value;
-    this.employeeService.save(employee);
-    this.router.navigateByUrl('/employee/list');
+    this.employeeService.save(employee).subscribe(() => {
+    }, e => {
+
+    }, () =>{
+      this.router.navigateByUrl('/list');
+    });
   }
 }

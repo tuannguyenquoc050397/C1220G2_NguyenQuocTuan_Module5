@@ -7,6 +7,8 @@ import { CustomerDeleteComponent } from './customer-delete/customer-delete.compo
 import {ReactiveFormsModule} from '@angular/forms';
 import {CustomerRoutingModule} from './customer-routing.module';
 import {RouterModule} from '@angular/router';
+import {HttpClientModule} from '@angular/common/http';
+import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -16,11 +18,13 @@ import {RouterModule} from '@angular/router';
     CustomerCreateComponent,
     CustomerListComponent
   ],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    CustomerRoutingModule,
-    RouterModule
-  ]
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        CustomerRoutingModule,
+        RouterModule,
+        HttpClientModule,
+        NgbPaginationModule
+    ]
 })
 export class CustomerModule { }

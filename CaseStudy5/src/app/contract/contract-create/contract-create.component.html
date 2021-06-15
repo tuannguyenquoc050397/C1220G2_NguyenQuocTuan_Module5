@@ -1,5 +1,6 @@
 <body>
 <h5 style="text-align: center">ADD NEW CONTRACT</h5>
+<button type="button" (click)="click()">click</button>
 <div class="container">
   <div class="row">
     <div class="col-3">
@@ -26,14 +27,25 @@
           customer:
           <fieldset formGroupName="customer">
             <select class="form-control" formControlName="id" required>
-              <ng-container *ngFor="let customer as customers">
-                <option [value]="customer.id">{{customer.name}}--{{customer.id}}</option>
-              </ng-container>
+                <option *ngFor="let customer of customers" [value]="customer.id">name: {{customer.name}}-- id:{{customer.id}}</option>
             </select>
           </fieldset>
-          <p style="color: red"
-             *ngIf="contractForm.hasError('isemptycode',['typeCustomer'])
-      && contractForm.get('typeCustomer').pristine">is Empty</p>
+        </div>
+        <div class="form-group">
+          Employee:
+          <fieldset formGroupName="employee">
+            <select class="form-control" formControlName="id" required>
+              <option *ngFor="let employee of employees" [value]="employee.id">name: {{employee.name}}-- id:{{employee.id}}</option>
+            </select>
+          </fieldset>
+        </div>
+        <div class="form-group">
+          Service:
+          <fieldset formGroupName="service">
+            <select class="form-control" formControlName="id" required>
+              <option *ngFor="let service of services" [value]="service.id">name: {{service.name}}-- id:{{service.id}}</option>
+            </select>
+          </fieldset>
         </div>
         <button type="submit" class="btn btn-primary" [disabled]="!contractForm.valid">Add</button>
         <a type="button" class="btn btn-success" routerLink="/customer/list">Close</a>

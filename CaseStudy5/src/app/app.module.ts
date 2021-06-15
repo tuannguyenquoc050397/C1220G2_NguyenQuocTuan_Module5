@@ -7,6 +7,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {RouterModule} from '@angular/router';
 import {ShareModule} from './share/share.module';
 import {ServiceModule} from './service/service.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {ServiceModule} from './service/service.module';
     AppRoutingModule,
     RouterModule,
     ShareModule,
-    ServiceModule
+    ServiceModule,
+    NgbModule
 
   ],
   providers: [],

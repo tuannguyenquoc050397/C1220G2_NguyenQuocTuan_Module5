@@ -8,11 +8,19 @@
       <form [formGroup]="customerFormGroup" (ngSubmit)="submit()">
         <div class="form-group">
           Id:
-          <input type="text" class="form-control input-sm" formControlName="id">
+          <input type="number" class="form-control input-sm" formControlName="id">
           <span style="color: red"
-                *ngIf="customerFormGroup.controls.id.hasError('pattern')
+                *ngIf="customerFormGroup.controls.id.hasError('required')
          && customerFormGroup.controls.id.dirty">
-                id not matching</span>
+                is empty</span>
+        </div>
+        <div class="form-group">
+          IdCustomer:
+          <input type="text" class="form-control input-sm" formControlName="idCustomer">
+          <span style="color: red"
+                *ngIf="customerFormGroup.controls.idCustomer.hasError('pattern')
+         && customerFormGroup.controls.idCustomer.dirty">
+                idCustomer not matching</span>
         </div>
         <div class="form-group">
           Name:

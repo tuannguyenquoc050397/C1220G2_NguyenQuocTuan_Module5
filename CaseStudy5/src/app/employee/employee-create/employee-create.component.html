@@ -9,6 +9,10 @@
         <div class="form-group">
           Id:
           <input type="text" class="form-control input-sm" formControlName="id">
+        </div>
+        <div class="form-group">
+          Id Employee:
+          <input type="text" class="form-control input-sm" formControlName="idEmployee">
           <span style="color: red"
                 *ngIf="employeeFormGroup.controls.id.hasError('pattern')
          && employeeFormGroup.controls.id.dirty">

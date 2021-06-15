@@ -1,5 +1,6 @@
 export interface Service {
-  id: string;
+  id: number;
+  idService: string;
   name: string;
   area: string;
   floor: string;
