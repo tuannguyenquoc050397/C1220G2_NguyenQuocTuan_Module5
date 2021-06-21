@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {DangTin} from '../dang-tin';
 import {DangTinService} from '../dang-tin.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-bai-dang',
@@ -15,7 +16,8 @@ export class BaiDangComponent implements OnInit {
   dienTich: string = '';
   message: string = '';
 
-  constructor(private dangTinService: DangTinService) {
+  constructor(private dangTinService: DangTinService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -34,8 +36,6 @@ export class BaiDangComponent implements OnInit {
   }
 
   search() {
-
-
     this.dangTinService.findAll().subscribe(value => {
       let baiDangSearch: DangTin[] = [];
       for (let i = 0; i < value.length; i++) {
@@ -65,5 +65,14 @@ export class BaiDangComponent implements OnInit {
   setHuong($event: any) {
     this.huong = $event.target.value;
     console.log(this.huong);
+  }
+
+  delete(id: number) {
+    this.dangTinService.delete(Number(id)).subscribe(value => {
+      this.loadList();
+    }, error => {
+
+    }, () => {
+    });
   }
 }

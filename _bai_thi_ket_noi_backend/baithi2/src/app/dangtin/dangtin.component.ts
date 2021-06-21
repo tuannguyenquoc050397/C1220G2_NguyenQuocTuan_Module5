@@ -12,20 +12,7 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class DangtinComponent implements OnInit {
 
-  danhMucs: DanhMuc[] = [
-    {
-      id: 1,
-      name: 'danh muc 1'
-    },
-    {
-      id: 2,
-      name: 'danh muc 2'
-    },
-    {
-      id: 3,
-      name: 'danh muc 3'
-    }
-  ];
+  danhMucs: DanhMuc[];
   dangTinForm: FormGroup = new FormGroup({
     danhMuc:new FormControl(),
     vungMien:new FormControl(),
@@ -44,6 +31,9 @@ export class DangtinComponent implements OnInit {
               private toastService: ToastrService) { }
 
   ngOnInit(): void {
+    this.dangTinService.findAllDanhMuc().subscribe(value => {
+      this.danhMucs = value;
+    })
   }
 
 

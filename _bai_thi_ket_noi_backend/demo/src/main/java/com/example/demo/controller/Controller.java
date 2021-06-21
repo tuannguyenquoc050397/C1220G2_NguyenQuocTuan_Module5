@@ -2,6 +2,9 @@ package com.example.demo.controller;
 
 import com.example.demo.model.DangTin;
 import com.example.demo.model.DanhMuc;
+import com.example.demo.repository.DangTinRepository;
+import com.example.demo.repository.DanhMucRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -11,29 +14,34 @@ import java.util.List;
 @RestController
 public class Controller {
 
-    private List<DangTin> dangTins = this.buildData();
+    @Autowired
+    private DangTinRepository dangTinRepository;
+    @Autowired
+    private DanhMucRepository danhMucRepository;
 
-public List<DangTin> buildData(){
-    List<DangTin> dangTinList = new ArrayList<>();
-    dangTinList.add(new DangTin(1,"Ha Noi","Ca nhan", "Cho Thue",
-            "Moi","Ha Noi","123","Dong",
-            "tua de","noi dung","1231",new DanhMuc(1,"123")));
-    dangTinList.add(new DangTin(2,"Da Nang","Ca nhan", "Cho Thue",
-            "Moi","Ha Noi","123","Dong",
-            "tua de","noi dung","1231",new DanhMuc(1,"123")));
-    dangTinList.add(new DangTin(3,"Ho Chi Minh","Ca nhan", "Cho Thue",
-            "Moi","Ha Noi","123","Dong",
-            "tua de","noi dung","1231",new DanhMuc(1,"123")));
-    return dangTinList;
-}
 
-    @RequestMapping(value = "/list",method = RequestMethod.GET)
-    public List<DangTin> getEmployees() {
-        return this.dangTins;
+    @RequestMapping(value = "/listDangTin", method = RequestMethod.GET)
+    public List<DangTin> getListDangTin() {
+        return this.dangTinRepository.findAll();
     }
 
-    @PostMapping(value = "/list")
-    public void create(@RequestBody DangTin dangTin){
-        this.dangTins.add(dangTin);
+    @PostMapping(value = "/listDangTin")
+    public void create(@RequestBody DangTin dangTin) {
+        this.dangTinRepository.save(dangTin);
+    }
+
+    @PutMapping(value = "/listDangTin")
+    public void update(@RequestBody DangTin dangTin) {
+        this.dangTinRepository.save(dangTin);
+    }
+
+    @DeleteMapping(value = "/listDangTin/{id}")
+    public void delete(@PathVariable Integer id) {
+        this.dangTinRepository.deleteById(id);
+    }
+
+    @RequestMapping(value = "/listDanhMuc", method = RequestMethod.GET)
+    public List<DanhMuc> getListDanhMuc() {
+        return this.danhMucRepository.findAll();
     }
 }

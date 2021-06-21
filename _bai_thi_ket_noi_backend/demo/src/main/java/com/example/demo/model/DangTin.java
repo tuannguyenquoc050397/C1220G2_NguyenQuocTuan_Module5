@@ -1,6 +1,19 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+import javax.persistence.*;
+
+@Table
+@Entity
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class DangTin {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String vungMien;
     private String banLa;
@@ -12,6 +25,9 @@ public class DangTin {
     private String tuaDe;
     private String noiDung;
     private String gia;
+
+    @ManyToOne
+    @JoinColumn(name="danhMuc_id", nullable = false)
     private DanhMuc danhMuc;
 
     public DangTin(Integer id, String vungMien, String banLa, String banDangTin, String tinhTrang, String diaChi, String dienTich, String huong, String tuaDe, String noiDung, String gia, DanhMuc danhMuc) {
