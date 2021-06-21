@@ -23,6 +23,10 @@
                     *ngIf="registerForm.controls.email.hasError('email')
          && registerForm.controls.email.dirty">
                 Invalid format email</span>
+              <span style="color: red"
+                    *ngIf="registerForm.controls.email.hasError('emailcheck')
+         && registerForm.controls.email.dirty">
+                email = tuan@gmail </span>
             </td>
           </tr>
           <tr>

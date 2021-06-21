@@ -13,7 +13,7 @@ export class RegisterComponent implements OnInit {
 
   constructor() {
     this.registerForm = new FormGroup({
-      email: new FormControl('tuan@gmail.com', [Validators.required, Validators.email]),
+      email: new FormControl('', Validators.compose([Validators.required, Validators.email, this.checkEmail])),
       passwordGroup: new FormGroup({
         password: new FormControl('', Validators.minLength(6)),
         confirmPassword: new FormControl('')
@@ -37,6 +37,13 @@ export class RegisterComponent implements OnInit {
     return (v.password === v.confirmPassword) ?
       null : {
         passwordnotmacth: true
+      };
+  }
+  checkEmail(c: AbstractControl) {
+    const v = c.value;
+    return (v == 'tuan@gmail') ?
+      null : {
+        emailcheck: true
       };
   }
 }
