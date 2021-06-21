@@ -1,0 +1,149 @@
+{
+  "CustomerList": [
+    {
+      "id": 1,
+      "name": "Tien",
+      "dateOfBirth": "2021-06-18",
+      "typeCustomer": {
+        "id": "2",
+        "name": "platinum"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Long",
+      "dateOfBirth": "2021-06-02",
+      "typeCustomer": {
+        "id": "1",
+        "name": "diamond"
+      }
+    },
+    {
+      "id": 3,
+      "name": "Khanh",
+      "dateOfBirth": "2021-06-04",
+      "typeCustomer": {
+        "id": "3",
+        "name": "gold"
+      }
+    }
+  ],
+  "typeCustomerList": [
+    {
+      "id": "1",
+      "name": "diamond"
+    },
+    {
+      "id": "2",
+      "name": "platinum"
+    },
+    {
+      "id": "3",
+      "name": "gold"
+    }
+  ],
+  "dangTinList": [
+    {
+      "danhMuc": {
+        "id": 2,
+        "name": "danh muc 2"
+      },
+      "vungMien": "HN",
+      "banLa": "Cá nhân",
+      "banDangTin": "Cho thuê",
+      "tinhTrang": "Mới",
+      "diaChi": "HN",
+      "dienTich": 144,
+      "huong": "Đông",
+      "tuaDe": "tựa đề 1",
+      "noiDung": "nội dung 1",
+      "gia": 100000000,
+      "id": 1
+    },
+    {
+      "danhMuc": {
+        "id": 3,
+        "name": "danh muc 3"
+      },
+      "vungMien": "HN",
+      "banLa": "Cá nhân",
+      "banDangTin": "Cho thuê",
+      "tinhTrang": "Mới",
+      "diaChi": "asd",
+      "dienTich": 123123,
+      "huong": "Đông",
+      "tuaDe": "aaaaaaaaaa",
+      "noiDung": "fffff",
+      "gia": 20202002020,
+      "id": 2
+    },
+    {
+      "danhMuc": {
+        "id": 2,
+        "name": "danh muc 2"
+      },
+      "vungMien": "HN",
+      "banLa": "Công ty",
+      "banDangTin": "Cần thuê",
+      "tinhTrang": "Đã sử dụng",
+      "diaChi": "HN",
+      "dienTich": 123,
+      "huong": "Đông",
+      "tuaDe": "asd",
+      "noiDung": "dđ",
+      "gia": 123123123,
+      "id": 3
+    },
+    {
+      "danhMuc": {
+        "id": 2,
+        "name": "danh muc 2"
+      },
+      "vungMien": null,
+      "banLa": "Công ty",
+      "banDangTin": "Cần mua",
+      "tinhTrang": "Đã sử dụng",
+      "diaChi": "123123123",
+      "dienTich": 123123123123,
+      "huong": "Nam",
+      "tuaDe": "123123123",
+      "noiDung": "123123123123",
+      "gia": 123123123123,
+      "id": 4
+    },
+    {
+      "danhMuc": {
+        "id": 2,
+        "name": "danh muc 2"
+      },
+      "vungMien": "123123",
+      "banLa": "Công ty",
+      "banDangTin": "Cần mua",
+      "tinhTrang": "Đã sử dụng",
+      "diaChi": "123123123",
+      "dienTich": 123123123,
+      "huong": "Nam",
+      "tuaDe": "12312312",
+      "noiDung": "123123",
+      "gia": 123123123312,
+      "id": 5
+    },
+    {
+      "danhMuc": {
+        "id": 2,
+        "name": "danh muc 2"
+      },
+      "vungMien": "123123",
+      "banLa": "Công ty",
+      "banDangTin": "Cần mua",
+      "tinhTrang": "Đã sử dụng",
+      "diaChi": "123123123",
+      "dienTich": 1231231,
+      "huong": "Tây",
+      "tuaDe": "123123",
+      "noiDung": "123123",
+      "gia": 123123123123,
+      "id": 6
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+<body
+  style="height: 600px;background-image: url('https://i.pinimg.com/originals/4c/32/b8/4c32b8c9d316da2348be65685f578264.jpg')">
+
+
+<h1>Danh sách các bài viết đã đẵng</h1>
+
+<div class="container-fluid">
+  <div class="row">
+    <form class="form-inline">
+      Diện tích:
+      <input type="number" class="form-control" (change)=setDienTich($event)>
+      Giá:
+      <input type="number" class="form-control" (change)=setGia($event)>
+      Hướng:
+      <div class="form-group">
+        <select (change)=setHuong($event) class="form-control">
+          <option value="" >---</option>
+          <option value="Đông">Đông</option>
+          <option value="Tây">Tây</option>
+          <option value="Nam">Nam</option>
+          <option value="Bắc">Bắc</option>
+        </select>
+      </div>
+      <button class="btn btn-success" type="button" (click)="search()">Search</button>
+    </form>
+  </div>
+</div>
+
+<div class="container-fluid" style="height: 340px">
+  <div class="row">
+    <table class="table table-striped">
+      <thead>
+      <tr style="font-size: 22px; font-weight: bold;">
+        <th>Id</th>
+        <th>Tiêu đề</th>
+        <th>Loại bài viết</th>
+        <th>Danh mục</th>
+<!--        <th>Ngày đăng</th>-->
+        <th>Trạng thái</th>
+        <th colspan="2" style="text-align: center"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let dangTin of dangTins">
+        <td>{{dangTin.id}}</td>
+        <td>{{dangTin.tuaDe}}</td>
+        <td>{{dangTin.banDangTin}}</td>
+        <td>{{dangTin.danhMuc.name}}</td>
+        <td>{{dangTin.tinhTrang}}</td>
+        <td>
+          <button type="button" class="btn btn-primary">Sửa</button>
+        </td>
+        <td>
+          <button type="button" class="btn btn-danger">Xóa
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <ng-container *ngIf="message != ''">
+      <h5 style="text-align: center; color: red; width: 100%; margin-top: 50px">{{message}}</h5>
+    </ng-container>
+  </div>
+</div>
+
+</body>

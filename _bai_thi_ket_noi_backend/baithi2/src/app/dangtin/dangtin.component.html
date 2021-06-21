@@ -1,0 +1,180 @@
+<body>
+<h5 style="text-align: center">Đăng thông tin</h5>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+    </div>
+    <div class="col-7" style="font-size: 14px">
+      <form [formGroup]="dangTinForm" (ngSubmit)="submit()" id="formCreate" >
+        <div class="form-group">
+          Danh mục:
+          <select class="form-control" formControlName="danhMuc">
+            <option *ngFor="let danhMuc of danhMucs" [ngValue]="danhMuc">{{danhMuc.name}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          Vùng miền:
+          <input type="text" class="form-control input-sm" formControlName="vungMien">
+        </div>
+        <div class="form-group">
+          Bạn là:
+          <div class="form-check-inline">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" formControlName="banLa" [(ngModel)]="banLaP" value="Cá nhân">Cá nhân
+            </label>
+          </div>
+          <div class="form-check-inline">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" formControlName="banLa" value="Công ty">Công ty
+            </label>
+          </div>
+        </div>
+        <div class="form-group">
+          Bạn đăng tin:
+          <div class="form-check-inline">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" formControlName="banDangTin"  value="Cần bán">Cần
+              bán
+            </label>
+          </div>
+          <div class="form-check-inline">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" formControlName="banDangTin"  value="Cần mua">Cần
+              mua
+            </label>
+          </div>
+          <div class="form-check-inline">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" formControlName="banDangTin"  value="Cho thuê">Cho
+              thuê
+            </label>
+          </div>
+          <div class="form-check-inline">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" formControlName="banDangTin"  value="Cần thuê">Cần
+              thuê
+            </label>
+          </div>
+        </div>
+        <div class="form-group">
+          Tình trạng:
+          <div class="form-check-inline">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" formControlName="tinhTrang"  value="Mới">Mới
+            </label>
+          </div>
+          <div class="form-check-inline">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" formControlName="tinhTrang" value="Đã sử dụng">Đã
+              sử dụng
+            </label>
+          </div>
+        </div>
+        <div class="form-group">
+          Địa chỉ:
+          <input type="text" class="form-control input-sm" formControlName="diaChi">
+          <span style="color: red"
+                *ngIf="dangTinForm.controls.diaChi.hasError('required')
+         && dangTinForm.controls.diaChi.touched">
+                Trường này không được để trống.</span>
+
+        </div>
+        <div class="form-group">
+          Diện tích:
+          <input type="number" class="form-control input-sm" formControlName="dienTich">
+          <span style="color: red"
+                *ngIf="dangTinForm.controls.dienTich.hasError('required')
+         && dangTinForm.controls.dienTich.touched">
+                Trường này không được để trống.</span>
+          <span style="color: red"
+                *ngIf="dangTinForm.controls.dienTich.hasError('min')
+         && dangTinForm.controls.dienTich.touched">
+                Diện tích phải lớn hơn 20m2</span>
+
+        </div>
+        <div class="form-group">
+          Hướng:
+          <div class="form-group">
+            <select formControlName="huong" class="form-control">
+              <option value="Đông">Đông</option>
+              <option value="Tây">Tây</option>
+              <option value="Nam">Nam</option>
+              <option value="Bắc">Bắc</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          Tựa đề:
+          <input type="text" class="form-control input-sm" formControlName="tuaDe">
+          <span style="color: red"
+                *ngIf="dangTinForm.controls.tuaDe.hasError('required')
+         && dangTinForm.controls.tuaDe.touched">
+                Trường này không được để trống.</span>
+        </div>
+        <div class="form-group">
+          Nội dung:
+          <input type="text" class="form-control input-sm" formControlName="noiDung">
+          <span style="color: red"
+                *ngIf="dangTinForm.controls.noiDung.hasError('required')
+         && dangTinForm.controls.noiDung.touched">
+                Trường này không được để trống.</span>
+        </div>
+        <div class="form-group">
+          Giá:
+          <input type="number" class="form-control input-sm" formControlName="gia">
+          <span style="color: red"
+                *ngIf="dangTinForm.controls.gia.hasError('required')
+         && dangTinForm.controls.gia.touched">
+                Trường này không được để trống.</span>
+          <span style="color: red"
+                *ngIf="dangTinForm.controls.gia.hasError('min')
+         && dangTinForm.controls.gia.touched">
+                Giá phải lớn hơn 100.000.000.</span>
+
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!dangTinForm.valid">Đăng tin</button>
+
+<!--        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"-->
+<!--             aria-hidden="true">-->
+<!--          <div class="modal-dialog" role="document">-->
+<!--            <div class="modal-content">-->
+<!--              <div class="modal-header">-->
+<!--                <h5 class="modal-title" id="exampleModalLabel">Delete</h5>-->
+<!--                <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--                  <span aria-hidden="true">&times;</span>-->
+<!--                </button>-->
+<!--              </div>-->
+<!--              <div class="modal-body">-->
+<!--                <p>Nội dung tin</p>-->
+<!--                <hr>-->
+<!--                <p>Vùng miền: </p>-->
+<!--                <p>Bạn là: </p>-->
+<!--                <p>Hướng: </p>-->
+<!--                <p>Tình trạng: </p>-->
+<!--                <p>Địa chỉ: </p>-->
+<!--                <p>Diện tích: </p>-->
+<!--                <p>Giá: </p>-->
+<!--                <p>nội dung: </p>-->
+<!--              </div>-->
+<!--              <div class="modal-footer">-->
+<!--                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick = "submitFormEmployeeDelete()">Đồng ý</button>-->
+<!--                <button type="button" class="btn btn-primary" data-dismiss="modal">Thoát-->
+<!--                </button>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  function  submitFormEmployeeDelete(){
+
+    document.getElementById("formCreate").submit();
+  }
+</script>
+
+</body>
+
